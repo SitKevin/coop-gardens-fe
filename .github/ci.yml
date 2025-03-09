@@ -1,0 +1,29 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+    branches: master
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+
+      -  # 4️⃣ Chạy ESLint kiểm tra code FE
+      - name: Run ESLint (FE)
+        working-directory:
+        run: npm run lint
+
+      - name: Archive build
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
