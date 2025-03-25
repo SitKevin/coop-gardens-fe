@@ -1,0 +1,18 @@
+@layer components {
+    .font-nunito {
+      font-family: var(--font-nunito-sans);
+      line-height: 1.5;
+    }
+    
+    .font-bungee {
+      font-family: var(--font-bungee);
+      line-height: 1.5;
+    }
+    
+    .font-pacifico {
+      font-family: var(--font-pacifico);
+      line-height: 2;
+      padding-bottom: 0.4em;
+      padding-top: 0.2em;
+    }
+  }

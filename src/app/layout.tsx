@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Pacifico, Nunito_Sans, Bungee } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider"
 
@@ -10,6 +10,25 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const pacifico = Pacifico({
+  weight: "400",
+  variable: "--font-pacifico",
+  subsets: ["latin"],
+});
+
+
+const bungee = Bungee({
+  weight: "400",
+  variable: "--font-bungee",
+  subsets: ["latin"],
+});
+
+const nutinosans = Nunito_Sans({
+  weight: "400",
+  variable: "--font-nunito-sans",
   subsets: ["latin"],
 });
 
@@ -24,15 +43,14 @@ export default function RootLayout({children,}: Readonly<{
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${nutinosans.variable} ${bungee.variable} antialiased`}>
         <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+          {children}
         </ThemeProvider>
       </body>
     </html>
