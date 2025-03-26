@@ -1,3 +1,5 @@
+"use client"
+
 export default function ProductPage() {
     return (
       <div className="px-4 md:px-8 py-6 w-full max-w-[1600px] mx-auto">
