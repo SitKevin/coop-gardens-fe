@@ -1,6 +1,9 @@
 "use client";
 
-import { MainCarousel, SplitCarousel, ModeToggle, Resizable } from "@/app/pages/home";
+import { MainCarousel } from "@/components/home-page/main-carousel";
+import { SplitCarousel } from "@/components/home-page/split-carousel";
+import { CustomResizable } from "@/components/home-page/custom-resizeable";
+import { ModeToggle } from "@/components/home-page/mode-toggle";
 
 export default function Home() {
   return (
@@ -29,20 +32,20 @@ export default function Home() {
         <div className="w-full px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1440px] mx-auto">
             <div className="md:col-span-2 h-[600px]">
-              <Resizable 
+              <CustomResizable 
                 textSize="text-4xl" 
                 text="Tổng hợp phương pháp làm vườn hiệu quả tại chuỗi cung ứng khoai tây lớn nhất Đà Lạt" 
               />
             </div>
             <div className="md:col-span-1 flex flex-col gap-6">
               <div className="h-[290px]">
-                <Resizable 
+                <CustomResizable 
                   textSize="text-xl" 
                   text="5 Bí kíp chăm sóc cây ăn trái mùa khô" 
                 />
               </div>
               <div className="h-[290px]">
-                <Resizable 
+                <CustomResizable 
                   textSize="text-xl" 
                   text="Nông trại tự động hóa: Xu hướng mới trong sản xuất" 
                   imageUrl="https://porch.com/advice/wp-content/uploads/2021/11/pexels-pixabay-235725.jpg"
