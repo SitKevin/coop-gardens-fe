@@ -4,10 +4,12 @@ import { MainCarousel } from "@/components/home-page/main-carousel";
 import { SplitCarousel } from "@/components/home-page/split-carousel";
 import { CustomResizable } from "@/components/home-page/custom-resizeable";
 import { ModeToggle } from "@/components/home-page/mode-toggle";
+import Header from '@/components/header/header';
 
 export default function Home() {
   return (
     <div>
+      <Header />
       <div 
           className="relative h-[900px] bg-cover bg-center flex items-center justify-center"
           style={{ backgroundImage: "url('/h1background.jpg')" }}>
