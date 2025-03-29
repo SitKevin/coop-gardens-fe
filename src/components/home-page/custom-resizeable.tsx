@@ -13,7 +13,7 @@ interface ResizableProps {
   imageUrl?: string;  
 }
 
-export function Resizable({ 
+export function CustomResizable({ 
   textSize = "text-4xl", 
   text = "Tổng hợp phương pháp làm vườn hiệu quả tại chuỗi cung ứng khoai tây lớn nhất Đà Lạt",
   imageUrl = "https://www.danielleskosky.com/wp-content/uploads/media-uploads/laptop-screen-blog.jpg"

@@ -1,3 +1,5 @@
+"use client"
+
 import { Calendar, Home, Inbox, Leaf, Search, Settings, ShoppingBag, ShoppingBasket } from "lucide-react"
 
 import {
