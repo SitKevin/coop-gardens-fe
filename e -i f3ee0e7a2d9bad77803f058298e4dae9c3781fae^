@@ -1,0 +1,65 @@
+[33mcommit 142097ebc5fad404144ce7c7e3115653052aeee7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mhome-page[m[33m)[m
+Author: k3viinz <23520769@gm.uit.edu.vn>
+Date:   Sat Mar 29 07:04:08 2025 +0700
+
+    refactor: remove sensitive key files
+
+[33mcommit f3ee0e7a2d9bad77803f058298e4dae9c3781fae[m
+Author: khoiquoc <23520769@gm.uit.edu.vn>
+Date:   Sat Mar 29 06:46:01 2025 +0700
+
+    feat: add header
+
+[33mcommit be51499ccd7d964d9636c86df1af0b6ab1782f6f[m[33m ([m[1;32mmaster[m[33m)[m
+Author: khoiquoc <23520769@gm.uit.edu.vn>
+Date:   Sat Mar 29 06:04:15 2025 +0700
+
+    feat: add header
+
+[33mcommit 1a0a910569da898197966346417227f7e02dbd2d[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: bae29fe 6bc4ab5
+Author: Hpgbao2204 <150576709+Hpgbao2204@users.noreply.github.com>
+Date:   Fri Mar 28 02:25:45 2025 +0700
+
+    Merge pull request #2 from MonUITVN23/master
+    
+    fix: thay đổi cấu trúc thư mục, route
+
+[33mcommit 6bc4ab5b08172def74e949d53339de7647942892[m
+Author: MonUITVN23 <23520051@gm.uit.edu.vn>
+Date:   Wed Mar 26 13:54:53 2025 +0700
+
+    fix: thay đổi cấu trúc thư mục, route
+
+[33mcommit bae29fe99b9bbef180af7e80a3a4b64bc07355fb[m
+Merge: 10693a6 c05c9f4
+Author: Hpgbao2204 <150576709+Hpgbao2204@users.noreply.github.com>
+Date:   Tue Mar 25 22:59:01 2025 +0700
+
+    add: Homepage + blog page
+    
+    feat: add new carousel component and change theme
+
+[33mcommit c05c9f4c1389c55704e74c4bee120b30bc40ea82[m
+Author: MonUITVN23 <23520051@gm.uit.edu.vn>
+Date:   Tue Mar 25 20:53:03 2025 +0700
+
+    feat: open pull request
+
+[33mcommit 29e4150beb92752e4c58353e64fa5f758ac55c1b[m
+Author: MonUITVN23 <23520051@gm.uit.edu.vn>
+Date:   Mon Mar 17 09:56:17 2025 +0700
+
+    feat: add new carousel component and change theme
+
+[33mcommit 10693a6769e042bd7210ac7581a16023f738165b[m
+Author: hpgbao2204 <hpgbao@gmail.com>
+Date:   Sun Mar 9 12:54:37 2025 +0700
+
+    fix: hehe
+
+[33mcommit 1c738cba6fb04e438f81c1469d9e756d5ce5a9e6[m
+Author: hpgbao2204 <hpgbao@gmail.com>
+Date:   Sun Mar 9 12:51:38 2025 +0700
+
+    hehe
