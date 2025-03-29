@@ -9,13 +9,13 @@ export function SplitCarousel() {
       opts={{
         align: "start",
       }}
-      className="w-full max-w-[1440px] mx-auto"
+      className="w-full max-w-[1152px] mx-auto"
     >
       <CarouselContent>
         {Array.from({ length: 10 }).map((_, index) => (
           <CarouselItem key={index} className="flex justify-center items-center md:basis-1/2 lg:basis-1/3">
             <div className="p-1">
-              <Card className="w-[400px] h-[400px]">
+              <Card className="w-[300px] h-[300px]">
                 <CardContent className="flex flex-col h-full">
                   
                   <div 

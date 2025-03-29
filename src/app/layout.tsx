@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Pacifico, Nunito_Sans, Bungee, Lato } from "next/fon
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import Footer from "@/components/footer";
+import Header from "@/components/header/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,6 +58,7 @@ export default function RootLayout({children,}: Readonly<{
             disableTransitionOnChange
           >
             <div className="flex flex-col min-h-screen">
+              <Header />
               <main className="flex-grow">{children}</main>
               <Footer />
             </div>
