@@ -1,8 +1,11 @@
+
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Pacifico, Nunito_Sans, Bungee, Lato } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider"
-import Footer from "@/components/footer";
+import Footer from "@/components/footer/footer";
+import Header from "@/components/header/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,7 +52,7 @@ export default function RootLayout({children,}: Readonly<{
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${nutinosans.variable} ${bungee.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${nutinosans.variable} ${bungee.variable}  antialiased`}>
         <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -57,6 +60,7 @@ export default function RootLayout({children,}: Readonly<{
             disableTransitionOnChange
           >
             <div className="flex flex-col min-h-screen">
+              <Header />
               <main className="flex-grow">{children}</main>
               <Footer />
             </div>
