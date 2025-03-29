@@ -101,7 +101,7 @@ const items = [
 
 export function AppSidebar() {
     return (
-      <Sidebar className="w-auto pl-10 bg-green-200">
+      <Sidebar className="w-auto md:w-1/4 lg:w-1/5 h-screen bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700">
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel className="text-4xl font-bungee py-10 text-green-400">B-Zea Farm</SidebarGroupLabel>
