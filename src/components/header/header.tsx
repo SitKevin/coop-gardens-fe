@@ -40,7 +40,6 @@ const Header: React.FC = () => {
             <img src="/shopping-cart.gif" alt="cart" width={40} height={30} className="h-10" />
             <span><b>Giỏ Hàng</b></span>
           </Link>
-          </Link>
         </nav>
         
         {/* Thanh tìm kiếm và đăng nhập */}
