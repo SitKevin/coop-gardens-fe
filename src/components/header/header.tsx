@@ -7,18 +7,21 @@ const Header: React.FC = () => {
   return (
     <header className="bg-white shadow-md p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-4">
+        
+        <div className="flex items-center space-x-4" >
+          <Link href="/" className="flex items-center space-x-2"> 
           <Image src="/green-planet.gif" alt="Logo" width={40} height={40} className="h-10" />
           <span className="text-2xl font-bold">B-ZEA</span>
+          </Link>
         </div>
         
         {/* NAVIGATION */}
         <nav className="flex space-x-6">
-          <Link href="#products" className="flex items-center space-x-1 hover:underline">
+          <Link href="/product" className="flex items-center space-x-1 hover:underline">
             <Image src="/package.gif" alt="product" width={40} height={30} className="h-10" />
             <span><b>Sản Phẩm</b></span>
           </Link>
-          <Link href="#blogs" className="flex items-center space-x-1 hover:underline">
+          <Link href="/blogs" className="flex items-center space-x-1 hover:underline">
             <Image src="/blog.gif" alt="blog" width={40} height={30} className="h-10" />
             <span><b>Blogs</b></span>
           </Link>
@@ -31,7 +34,7 @@ const Header: React.FC = () => {
             <span><b>Giỏ Hàng</b></span>
           </Link>
         </nav>
-
+      
         {/* SEARCH & BUTTONS */}
         <div className="flex items-center space-x-4">
           {/* SEARCH INPUT */}
