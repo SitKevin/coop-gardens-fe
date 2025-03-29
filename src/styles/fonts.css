@@ -16,3 +16,7 @@
       padding-top: 0.2em;
     }
   }
+  .font-lato {
+    font-family: var(--font-lato);
+    line-height: 1.5;
+  }

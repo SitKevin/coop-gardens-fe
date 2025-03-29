@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Pacifico, Nunito_Sans, Bungee } from "next/font/google";
+import { Geist, Geist_Mono, Pacifico, Nunito_Sans, Bungee, Lato } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider"
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +20,11 @@ const pacifico = Pacifico({
   subsets: ["latin"],
 });
 
+const lato = Lato({
+  weight: "400",
+  variable: "--font-lato",
+  subsets: ["latin"],
+});
 
 const bungee = Bungee({
   weight: "400",
@@ -50,7 +56,10 @@ export default function RootLayout({children,}: Readonly<{
             enableSystem
             disableTransitionOnChange
           >
-          {children}
+            <div className="flex flex-col min-h-screen">
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
         </ThemeProvider>
       </body>
     </html>
