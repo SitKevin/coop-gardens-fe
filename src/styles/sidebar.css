@@ -1,0 +1,26 @@
+@layer components {
+    /* Styles cho sidebar desktop */
+    .desktop-sidebar [data-sidebar] {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+    
+    /* Đảm bảo sidebar desktop không thể bị đóng */
+    .desktop-sidebar [data-sidebar][data-state="closed"] {
+      display: block !important;
+      width: 320px !important;
+    }
+    
+    /* Mobile sidebar có thể đóng/mở bình thường */
+    .mobile-sidebar [data-sidebar] {
+      position: fixed;
+      z-index: 50;
+      height: 100vh;
+    }
+    
+    /* Tùy chỉnh nút trigger */
+    .sidebar-trigger-button {
+      @apply p-2 rounded-md bg-primary text-white hover:bg-primary/90;
+    }
+  }
