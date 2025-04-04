@@ -4,10 +4,10 @@ import { CategoryFilter } from "@/components/product-page/category"
 
 export default function ProductPage() {
   return (
-    <div className="w-full max-w-[1600px] mx-auto">
+    <div className="w-full max-w-[1440px] mx-auto">
       <div className="flex flex-col md:flex-row">
         {/* Sidebar với danh mục sản phẩm */}
-        <div className="md:w-64 md:sticky md:top-[64px] md:self-start md:h-[calc(100vh-130px)] md:overflow-y-auto">
+        <div className="md:w-68 md:sticky md:top-[64px] md:self-start md:h-[calc(100vh-130px)] md:overflow-y-auto">
           <div className="hidden md:block p-4">
             <CategoryFilter />
           </div>
