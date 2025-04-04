@@ -72,7 +72,7 @@ export function CategoryFilter() {
 
   return (
     <div className="space-y-4 border rounded-lg p-4 bg-white">
-      <h2 className="font-bold text-xl pb-2 border-b">Danh Mục Sản Phẩm</h2>
+      <h2 className="font-bold text-xl pb-2 border-b flex justify-center">Danh Mục Sản Phẩm</h2>
       
       <div className="space-y-2">
         {categories.map((category) => (

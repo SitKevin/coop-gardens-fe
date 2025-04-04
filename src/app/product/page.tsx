@@ -7,7 +7,7 @@ export default function ProductPage() {
     <div className="w-full max-w-[1440px] mx-auto">
       <div className="flex flex-col md:flex-row">
         {/* Sidebar với danh mục sản phẩm */}
-        <div className="md:w-68 md:sticky md:top-[64px] md:self-start md:h-[calc(100vh-130px)] md:overflow-y-auto">
+        <div className="md:w-80 md:sticky md:top-[64px] md:self-start md:h-[calc(100vh-130px)] md:overflow-y-auto">
           <div className="hidden md:block p-4">
             <CategoryFilter />
           </div>
@@ -29,7 +29,7 @@ export default function ProductPage() {
         </div>
         
         {/* Main content */}
-        <div className="flex-1 px-4 md:px-8 py-6">
+        <div className="flex-1 px-2 md:px-4 py-6">
           {/* Tiêu đề căn giữa */}
           <div className="w-full flex justify-center mb-10">
             <h1 className="text-4xl md:text-5xl font-bold text-center">Sản phẩm</h1>
