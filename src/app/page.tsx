@@ -4,7 +4,6 @@ import { MainCarousel } from "@/components/home-page/main-carousel";
 import { SplitCarousel } from "@/components/home-page/split-carousel";
 import { CustomResizable } from "@/components/home-page/custom-resizeable";
 import { ModeToggle } from "@/components/home-page/mode-toggle";
-import Header from '@/components/header/header';
 
 export default function Home() {
   return (
@@ -17,7 +16,7 @@ export default function Home() {
           <p className="font-nunito text-4xl font-stretch-expanded text-white text-center mt-0">Nông sản đến từ thiên nhiên</p>
         </div>
       </div>
-      <hr className="my-10 border-t-2 border-gray-300 w-[1440px] mx-auto" />
+      <hr className="my-10 border-t-2 border-gray-300 max-w-[1152px] mx-auto" />
       <div>
         <h2 className="font-pacifico text-6xl font-semibold text-center my-5 bg-gradient-to-r from-green-400 to-teal-500 bg-clip-text text-transparent">Giới Thiệu</h2>
         <p className="text-3xl font-mono text-gray-600 text-center my-10">B-Zea sẽ mang tới trải nghiệm tuyệt vời!</p>
@@ -36,6 +35,8 @@ export default function Home() {
               <CustomResizable 
                 textSize="text-4xl" 
                 text="Tổng hợp phương pháp làm vườn hiệu quả tại chuỗi cung ứng khoai tây lớn nhất Đà Lạt" 
+                imageUrl="https://www.danielleskosky.com/wp-content/uploads/media-uploads/laptop-screen-blog.jpg"
+                dateTime="Thứ 3, 17/10/2023"
               />
             </div>
             <div className="md:col-span-1 flex flex-col gap-6">
@@ -43,6 +44,8 @@ export default function Home() {
                 <CustomResizable 
                   textSize="text-xl" 
                   text="5 Bí kíp chăm sóc cây ăn trái mùa khô" 
+                  imageUrl="https://www.huggies.com.vn/-/media/Project/sau-rieng-bao-nhieu-calo-1.jpeg"
+                  dateTime="Thứ 2, 16/10/2023"
                 />
               </div>
               <div className="h-[290px]">
@@ -50,6 +53,7 @@ export default function Home() {
                   textSize="text-xl" 
                   text="Nông trại tự động hóa: Xu hướng mới trong sản xuất" 
                   imageUrl="https://porch.com/advice/wp-content/uploads/2021/11/pexels-pixabay-235725.jpg"
+                  dateTime="Thứ 5, 20/10/2023"
                 />
               </div>
             </div>

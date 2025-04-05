@@ -1,12 +1,20 @@
-'use client';
+"use client"; // Thêm directive này để đánh dấu đây là client component
 
-import Image from 'next/image';
+import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Header: React.FC = () => {
+  const router = useRouter();
+  
+  const handleLogin = () => {
+    router.push('/login');
+  };
+  
   return (
-    <header className="bg-white shadow-md p-4">
+    <header className="bg-white shadow-md p-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
+        {/* Logo và thương hiệu */}
         <div className="flex items-center space-x-4">
           <Image src="/icon/green-planet.gif" alt="Logo" width={40} height={40} className="h-10" />
           <span className="text-2xl font-bold">B-ZEA</span>
@@ -35,11 +43,10 @@ const Header: React.FC = () => {
           <span><b>Contact</b></span>
           </Link>
         </nav>
-
-        {/* SEARCH & BUTTONS */}
+        
+        {/* Thanh tìm kiếm và đăng nhập */}
         <div className="flex items-center space-x-4">
-          {/* SEARCH INPUT */}
-          <div className="relative">
+          <div className="relative hidden sm:block">
             <input
               type="text"
               placeholder="Tìm kiếm"
@@ -48,21 +55,19 @@ const Header: React.FC = () => {
             <Image
               src="/icon/loupe.png"
               alt="Search Icon"
-              width={20}
-              height={20}
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+              className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5"
             />
           </div>
-
-          {/* LOGIN BUTTON */}
-          <button
-            onClick={() => console.log("Đăng Nhập được nhấn")}
+          
+          {/* Nút đăng nhập */}
+          <button 
+            onClick={handleLogin}
             className="bg-black text-white rounded-full px-4 py-1 hover:bg-gray-800 transition-colors duration-200"
           >
             Đăng Nhập
           </button>
-
-          {/* THEME BUTTON */}
+          
+          {/* Theme toggle */}
           <button className="bg-green-700 text-white rounded-full px-4 py-1">
             🌿
           </button>
