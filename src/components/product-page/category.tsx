@@ -12,55 +12,49 @@ import { Button } from "@/components/ui/button"
 
 type CategoryItemProps = {
   name: string;
-  count: number;
-  subCategories?: { name: string; count: number }[];
+  subCategories?: { name: string }[];
 }
 
 const categories: CategoryItemProps[] = [
   {
     name: "Cây ăn quả",
-    count: 42,
     subCategories: [
-      { name: "Cây ăn quả nhiệt đới", count: 18 },
-      { name: "Cây ăn quả ôn đới", count: 12 },
-      { name: "Cây có múi", count: 8 },
-      { name: "Cây ăn quả thân gỗ", count: 4 },
+      { name: "Cây ăn quả nhiệt đới" },
+      { name: "Cây ăn quả ôn đới" },
+      { name: "Cây có múi" },
+      { name: "Cây ăn quả thân gỗ" },
     ]
   },
   {
     name: "Rau củ quả",
-    count: 36,
     subCategories: [
-      { name: "Rau ăn lá", count: 15 },
-      { name: "Rau ăn củ", count: 12 },
-      { name: "Rau gia vị", count: 9 },
+      { name: "Rau ăn lá" },
+      { name: "Rau ăn củ" },
+      { name: "Rau gia vị"},
     ]
   },
   {
     name: "Cây cảnh",
-    count: 28,
     subCategories: [
-      { name: "Cây cảnh nội thất", count: 14 },
-      { name: "Cây cảnh ngoại thất", count: 8 },
-      { name: "Cây bonsai", count: 6 },
+      { name: "Cây cảnh nội thất" },
+      { name: "Cây cảnh ngoại thất" },
+      { name: "Cây bonsai"},
     ]
   },
   {
     name: "Hạt giống",
-    count: 64,
     subCategories: [
-      { name: "Hạt giống rau", count: 30 },
-      { name: "Hạt giống hoa", count: 20 },
-      { name: "Hạt giống cây ăn quả", count: 14 },
+      { name: "Hạt giống rau" },
+      { name: "Hạt giống hoa" },
+      { name: "Hạt giống cây ăn quả" },
     ]
   },
   {
     name: "Phân bón",
-    count: 22,
     subCategories: [
-      { name: "Phân hữu cơ", count: 10 },
-      { name: "Phân vô cơ", count: 8 },
-      { name: "Phân vi sinh", count: 4 },
+      { name: "Phân hữu cơ" },
+      { name: "Phân vô cơ" },
+      { name: "Phân vi sinh" },
     ]
   },
 ]
@@ -78,12 +72,12 @@ export function CategoryFilter() {
 
   return (
     <div className="space-y-4 border rounded-lg p-4 bg-white">
-      <h2 className="font-bold text-xl pb-2 border-b">Danh Mục Sản Phẩm</h2>
+      <h2 className="font-bold text-xl pb-2 border-b flex justify-center">Danh Mục Sản Phẩm</h2>
       
       <div className="space-y-2">
         {categories.map((category) => (
           <Collapsible key={category.name} className="w-full">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center relative">
               <Button
                 variant="ghost"
                 className={cn(
@@ -101,12 +95,10 @@ export function CategoryFilter() {
                   </div>
                   <span>{category.name}</span>
                 </div>
-                <span className="text-gray-500 text-sm">({category.count})</span>
-              </Button>
-              
+              </Button> 
               {category.subCategories && category.subCategories.length > 0 && (
                 <CollapsibleTrigger asChild>
-                  <Button variant="ghost" size="sm" className="px-2">
+                  <Button variant="ghost" size="sm" className="px-2 absolute right-0 top-1/2 transform -translate-y-1/2">
                     <ChevronDown className="h-4 w-4" />
                   </Button>
                 </CollapsibleTrigger>
@@ -135,7 +127,6 @@ export function CategoryFilter() {
                         </div>
                         <span>{subCategory.name}</span>
                       </div>
-                      <span className="text-gray-500 text-sm">({subCategory.count})</span>
                     </Button>
                   ))}
                 </div>

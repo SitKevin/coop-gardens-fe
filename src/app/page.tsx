@@ -35,6 +35,8 @@ export default function Home() {
               <CustomResizable 
                 textSize="text-4xl" 
                 text="Tổng hợp phương pháp làm vườn hiệu quả tại chuỗi cung ứng khoai tây lớn nhất Đà Lạt" 
+                imageUrl="https://www.danielleskosky.com/wp-content/uploads/media-uploads/laptop-screen-blog.jpg"
+                dateTime="Thứ 3, 17/10/2023"
               />
             </div>
             <div className="md:col-span-1 flex flex-col gap-6">
@@ -42,6 +44,8 @@ export default function Home() {
                 <CustomResizable 
                   textSize="text-xl" 
                   text="5 Bí kíp chăm sóc cây ăn trái mùa khô" 
+                  imageUrl="https://www.huggies.com.vn/-/media/Project/sau-rieng-bao-nhieu-calo-1.jpeg"
+                  dateTime="Thứ 2, 16/10/2023"
                 />
               </div>
               <div className="h-[290px]">
@@ -49,6 +53,7 @@ export default function Home() {
                   textSize="text-xl" 
                   text="Nông trại tự động hóa: Xu hướng mới trong sản xuất" 
                   imageUrl="https://porch.com/advice/wp-content/uploads/2021/11/pexels-pixabay-235725.jpg"
+                  dateTime="Thứ 5, 20/10/2023"
                 />
               </div>
             </div>
