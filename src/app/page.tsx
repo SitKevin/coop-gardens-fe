@@ -9,7 +9,6 @@ import Header from '@/components/header/header';
 export default function Home() {
   return (
     <div>
-      <Header />
       <div 
           className="relative h-[900px] bg-cover bg-center flex items-center justify-center"
           style={{ backgroundImage: "url('/h1background.jpg')" }}>
