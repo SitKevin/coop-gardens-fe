@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -22,23 +23,23 @@ const Header: React.FC = () => {
         
         {/* NAVIGATION */}
         <nav className="flex space-x-6">
-          <Link href="#products" className="flex items-center space-x-1 hover:underline">
+          <Link href="product" className="flex items-center space-x-1 hover:underline">
             <Image src="/icon/package.gif" alt="product" width={40} height={30} className="h-10" />
             <span><b>Sản Phẩm</b></span>
           </Link>
-          <Link href="#blogs" className="flex items-center space-x-1 hover:underline">
+          <Link href="blogs" className="flex items-center space-x-1 hover:underline">
             <Image src="/icon/blog.gif" alt="blog" width={30} height={10} className="h-10" />
             <span><b>Blogs</b></span>
           </Link>
-          <Link href="#management" className="flex items-center space-x-1 hover:underline">
+          <Link href="management" className="flex items-center space-x-1 hover:underline">
             <Image src="/icon/tag.gif" alt="management" width={50} height={30} className="h-10" />
             <span><b>Quản Lý</b></span>
           </Link>
-          <Link href="#cart" className="flex items-center space-x-1 hover:underline">
+          <Link href="cart" className="flex items-center space-x-1 hover:underline">
             <Image src="/icon/shopping-cart.gif" alt="cart" width={40} height={30} className="h-10" />
             <span><b>Giỏ Hàng</b></span>
           </Link>
-          <Link href="#contact" className="flex items-center space-x-1 hover:underline">
+          <Link href="contact" className="flex items-center space-x-1 hover:underline">
           <Image src="/icon/telephone.gif" alt="contact" width={40} height={45} className="h-10" />
           <span><b>Contact</b></span>
           </Link>
@@ -55,6 +56,8 @@ const Header: React.FC = () => {
             <Image
               src="/icon/loupe.png"
               alt="Search Icon"
+              width={20}
+              height={20}
               className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5"
             />
           </div>
