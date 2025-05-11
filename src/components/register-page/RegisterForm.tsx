@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 import { register as registerUser } from "@/api/auth" // Rename to avoid conflict
 
 type RegisterValues = {
-  name: string
+  full_name: string
   email: string
   password: string
   confirm: string
@@ -23,7 +23,7 @@ export function RegisterForm() {
   const [error, setError] = useState<string | null>(null)
   
   const form = useForm<RegisterValues>({
-    defaultValues: { name: "", email: "", password: "", confirm: "" },
+    defaultValues: { full_name: "", email: "", password: "", confirm: "" },
   })
 
   const onSubmit = async (data: RegisterValues) => {
@@ -38,9 +38,9 @@ export function RegisterForm() {
     try {
       // Call the register function from our auth API
       const response = await registerUser({
-        name: data.name,
+        full_name: data.full_name,
         email: data.email,
-        password: data.password
+        password: data.password,
       })
       
       // Store authentication data
@@ -68,7 +68,7 @@ export function RegisterForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <RenderField<RegisterValues>
             control={form.control}
-            name="name"
+            name="full_name"
             label="Họ và tên"
             placeholder="Nguyễn Văn A"
             disabled={isSubmitting}

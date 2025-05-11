@@ -7,88 +7,103 @@ interface LoginCredentials {
 
 interface RegisterCredentials {
   email: string;
+  full_name: string;
+  role?: string;
   password: string;
-  name: string;
-  phone?: string;
-  address?: string;
 }
 
 interface LoginResponse {
   token: string;
   user: {
-    id: string;
     email: string;
-    name?: string;
+    full_name: string;
     role: string;
+    password: string;
   };
 }
 
 interface RegisterResponse {
   token: string;
   user: {
-    id: string;
     email: string;
-    name: string;
+    full_name: string;
     role: string;
-    phone?: string;
-    address?: string;
+    password: string;
   };
 }
 
 export async function login(credentials: LoginCredentials): Promise<LoginResponse> {
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        credentials: "include", // Bao gồm cookies nếu API của bạn sử dụng chúng
-        mode: "cors", // Đảm bảo CORS được hỗ trợ
-        body: JSON.stringify(credentials),
-      });
-  
-      const data = await response.json();
-  
-      if (!response.ok) {
-        throw new Error(data.message || "Đăng nhập thất bại");
-      }
-  
-      return data;
-    } catch (error) {
-      console.error("Lỗi kết nối:", error);
-      if (error instanceof TypeError && error.message.includes("fetch")) {
-        throw new Error("Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng của bạn.");
-      }
-      throw error;
+  try {
+    const response = await fetch(`${API_BASE_URL}/v1/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // Remove the credentials and mode options that might cause CORS issues
+      body: JSON.stringify({
+        email: credentials.email,
+        password: credentials.password
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `Đăng nhập thất bại (${response.status})`);
     }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Lỗi kết nối:", error);
+    if (error instanceof TypeError && error.message.includes("fetch")) {
+      throw new Error("Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng của bạn.");
+    }
+    throw error;
   }
-
-export async function register(credentials: RegisterCredentials): Promise<RegisterResponse> {
-  const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Đăng ký thất bại");
-  }
-
-  return data;
 }
 
-export async function logout(): Promise<void> {
+export async function register(credentials: RegisterCredentials): Promise<RegisterResponse> {
+  try {
+    // Match the exact field names expected by the backend
+    const requestBody = {
+      email: credentials.email,
+      password: credentials.password,
+      full_name: credentials.full_name, 
+      role: credentials.role || "User" 
+    };
+
+    const response = await fetch(`${API_BASE_URL}/v1/auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `Đăng ký thất bại (${response.status})`);
+    }
+
+      const data = await response.json();
+      return data;
+    }
+
+    catch (error) {
+    console.error("Lỗi kết nối:", error);
+    if (error instanceof TypeError && error.message.includes("fetch")) {
+      throw new Error("Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng của bạn.");
+    }
+    throw error;
+  }
+}
+
+export function logout(): void {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
 }
 
-// Additional helper functions you might want to add:
-
+// Helper functions
 export function isAuthenticated(): boolean {
   return localStorage.getItem("token") !== null;
 }
@@ -106,24 +121,41 @@ export function getCurrentUser(): LoginResponse['user'] | null {
 export function getAuthToken(): string | null {
   return localStorage.getItem("token");
 }
+
+// Mock login for testing when backend is unavailable
 export async function mockLogin(credentials: LoginCredentials): Promise<LoginResponse> {
-    return new Promise((resolve, reject) => {
-      // Giả lập độ trễ mạng
-      setTimeout(() => {
-        // Tài khoản test
-        if (credentials.email === "admin@example.com" && credentials.password === "password") {
-          resolve({
-            token: "mock-token-123456",
-            user: {
-              id: "1",
-              email: credentials.email,
-              name: "Người Dùng Test",
-              role: "admin"
-            }
-          });
-        } else {
-          reject(new Error("Email hoặc mật khẩu không chính xác"));
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (credentials.email === "admin@example.com" && credentials.password === "password") {
+        resolve({
+          token: "mock-token-123456",
+          user: {
+            email: credentials.email,
+            full_name: "Người Dùng Test",
+            role: "admin",
+            password: credentials.password,
+          }
+        });
+      } else {
+        reject(new Error("Email hoặc mật khẩu không chính xác"));
+      }
+    }, 800);
+  });
+}
+
+// Mock register for testing
+export async function mockRegister(credentials: RegisterCredentials): Promise<RegisterResponse> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        token: "mock-token-123456",
+        user: {
+          email: credentials.email,
+          full_name: credentials.full_name,
+          role: "user",
+          password: credentials.password,
         }
-      }, 800);
-    });
-  }
+      });
+    }, 800);
+  });
+}
