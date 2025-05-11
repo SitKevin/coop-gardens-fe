@@ -15,6 +15,7 @@ import {
     label: string
     type?: string
     placeholder?: string
+    disabled?: boolean
   }) => {
     const { control, name, label, type = "text", placeholder } = props
     return (
