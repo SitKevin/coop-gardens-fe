@@ -12,13 +12,13 @@ export default function Footer() {
           </div>
           <div className="flex gap-4">
             <a href="#" aria-label="YouTube">
-              <img src="/icons/youtube.svg" alt="YouTube" className="h-6" />
+              <img src="/youtube.svg" alt="YouTube" className="h-6" />
             </a>
             <a href="#" aria-label="Facebook">
-              <img src="/icons/facebook.svg" alt="Facebook" className="h-6" />
+              <img src="/facebook.svg" alt="Facebook" className="h-6" />
             </a>
             <a href="#" aria-label="Instagram">
-              <img src="/icons/instagram.svg" alt="Instagram" className="h-6" />
+              <img src="/instagram.svg" alt="Instagram" className="h-6" />
             </a>
           </div>
         </div>

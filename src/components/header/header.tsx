@@ -31,7 +31,7 @@ const Header: React.FC = () => {
             <Image src="/icon/blog.gif" alt="blog" width={30} height={10} className="h-10" />
             <span><b>Blogs</b></span>
           </Link>
-          <Link href="management" className="flex items-center space-x-1 hover:underline">
+          <Link href="dashboard" className="flex items-center space-x-1 hover:underline">
             <Image src="/icon/tag.gif" alt="management" width={50} height={30} className="h-10" />
             <span><b>Quản Lý</b></span>
           </Link>
