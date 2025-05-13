@@ -1,6 +1,7 @@
 import { PersonalInfo } from "./PersonalInfo"
 import ProductForm from "./ProductForm"
 import PostForm from "./PostForm"
+import { MetricCard } from "./MetricCard"
 
 // Mock data để preview UI
 const mockProducts = [
@@ -17,16 +18,24 @@ const mockPosts = [
 // Mock metrics
 const mockMetrics = {
   crops: 12,
-  yield: 3200,         // ví dụ: tổng sản lượng (kg)
-  seasons: 4,          // số mùa vụ đã canh tác
-  totalOrders: 86,     // tổng đơn hàng
-  avgRating: 4.5       // đánh giá trung bình
+  yield: 3200,
+  seasons: 4,
+  totalOrders: 86,
+  avgRating: 4.5,
 }
 
 export default function FarmerDashboard({ profile }: { profile: any }) {
+  // sử dụng mock data thay vì gọi API
   const products = mockProducts
   const posts = mockPosts
   const m = mockMetrics
+  const metrics = [
+    { label: "Cây trồng", value: m.crops },
+    { label: "Tổng sản lượng (kg)", value: m.yield },
+    { label: "Mùa vụ", value: m.seasons },
+    { label: "Tổng đơn hàng", value: m.totalOrders },
+    { label: "Đánh giá TB", value: `${m.avgRating.toFixed(1)} ★` },
+  ]
 
   return (
     <div className="p-6 space-y-8">
@@ -34,26 +43,9 @@ export default function FarmerDashboard({ profile }: { profile: any }) {
 
       {/* Metrics Overview */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-500">Cây trồng</h3>
-          <p className="text-2xl font-bold">{m.crops}</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-500">Tổng sản lượng (kg)</h3>
-          <p className="text-2xl font-bold">{m.yield}</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-500">Mùa vụ</h3>
-          <p className="text-2xl font-bold">{m.seasons}</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-500">Tổng đơn hàng</h3>
-          <p className="text-2xl font-bold">{m.totalOrders}</p>
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-sm font-medium text-gray-500">Đánh giá TB</h3>
-          <p className="text-2xl font-bold">{m.avgRating.toFixed(1)} ★</p>
-        </div>
+        {metrics.map((mt) => (
+          <MetricCard key={mt.label} label={mt.label} value={mt.value} />
+        ))}
       </section>
 
       {/* Quản lý sản phẩm */}
