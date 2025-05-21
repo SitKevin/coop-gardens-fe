@@ -7,7 +7,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { login } from "@/api/auth"
+import { login } from "@/services/auth/login"
+import { signup } from "@/services/auth/register"
+import { getCurrentUser, logout, isAuthenticated } from "@/services/auth/session"
+import { callApi } from "@/services/auth/apiClient"
+import { LoginCredentials, AuthResponse, User } from "@/services/auth/types"
+import { mockLogin, mockRegister } from "@/services/auth/mock"
 
 export function LoginForm({
   className,
