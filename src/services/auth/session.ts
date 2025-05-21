@@ -1,20 +1,21 @@
-import { User, AuthResponse } from "./types"
+import type { AuthResponse, User } from "./types"
 
-export function saveSession(data: AuthResponse) {
-  localStorage.setItem("token", data.token)
-  localStorage.setItem("user", JSON.stringify(data.user))
+export function saveSession(auth: AuthResponse): void {
+  localStorage.setItem("token", auth.token)
+  localStorage.setItem("user", JSON.stringify(auth.user))
+}
+
+export function clearSession(): void {
+  localStorage.removeItem("token")
+  localStorage.removeItem("user")
 }
 
 export function getCurrentUser(): User | null {
-  const u = localStorage.getItem("user")
-  return u ? JSON.parse(u) : null
+  const s = localStorage.getItem("user")
+  if (!s) return null
+  try { return JSON.parse(s) } catch { return null }
 }
 
-export function isAuthenticated(): boolean {
-  return !!localStorage.getItem("token")
-}
-
-export function logout() {
-  localStorage.removeItem("token")
-  localStorage.removeItem("user")
+export function getAuthToken(): string | null {
+  return localStorage.getItem("token")
 }

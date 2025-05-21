@@ -1,9 +1,13 @@
 import { callApi } from "./apiClient"
-import { RegisterCredentials, AuthResponse } from "./types"
+import { RegisterCredentials, RegisterResponse } from "./types"
 
-export function signup(creds: RegisterCredentials): Promise<AuthResponse> {
-  return callApi("/v1/auth/register", {
+export function signup(
+  creds: RegisterCredentials
+): Promise<RegisterResponse> {
+  const { email, password, full_name, role = "User" } = creds
+
+  return callApi<RegisterResponse>("/v1/auth/signup", {
     method: "POST",
-    body: JSON.stringify({ ...creds, role: creds.role || "user" }),
+    body: JSON.stringify({ email, password, full_name, role }),
   })
 }

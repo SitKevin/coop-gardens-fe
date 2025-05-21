@@ -8,7 +8,7 @@ import { FormCard } from "./FormCard"
 import { RenderField } from "./FormFields"
 import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
-import { register as registerUser } from "@/api/auth" // Rename to avoid conflict
+import { signup } from "@/services/auth/register"
 
 type RegisterValues = {
   full_name: string
@@ -37,7 +37,7 @@ export function RegisterForm() {
     
     try {
       // Call the register function from our auth API
-      const response = await registerUser({
+      const response = await signup({
         full_name: data.full_name,
         email: data.email,
         password: data.password,
