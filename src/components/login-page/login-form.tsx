@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { login } from "@/services/auth/login"
+import { useAuth } from "@/context/AuthContext"
 
 
 export function LoginForm({
@@ -15,6 +15,7 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
   const router = useRouter()
+  const { login } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -26,11 +27,7 @@ export function LoginForm({
     setError(null)
 
     try {
-      const data = await login({ email, password })
-      
-      // Save auth token to localStorage
-      localStorage.setItem("token", data.token)
-      localStorage.setItem("user", JSON.stringify(data.user))
+      await login({ email, password })
 
       // Redirect to dashboard or home page
       router.push("/dashboard")

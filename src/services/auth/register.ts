@@ -1,9 +1,6 @@
 import { callApi } from "./apiClient"
 import { RegisterCredentials, RegisterResponse } from "./types"
 
-/**
- * Đăng ký người dùng mới qua callApi wrapper
- */
 export function signup(
   creds: RegisterCredentials
 ): Promise<RegisterResponse> {

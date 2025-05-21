@@ -1,5 +1,4 @@
-
-
+import { AuthProvider } from "@/context/AuthContext"
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Pacifico, Nunito_Sans, Bungee, Lato } from "next/font/google";
 import "./globals.css";
@@ -60,11 +59,13 @@ export default function RootLayout({children,}: Readonly<{
             enableSystem
             disableTransitionOnChange
           >
+            <AuthProvider>
             <div className="flex flex-col min-h-screen">
               <Header />
               <main className="flex-grow">{children}</main>
               <Footer />
             </div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

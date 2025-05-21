@@ -4,14 +4,17 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useAuth } from "@/context/AuthContext";
 
 const Header: React.FC = () => {
   const router = useRouter();
-  
+  const { user, logout } = useAuth();
   const handleLogin = () => {
     router.push('/login');
   };
-  
+  const handleLogout = () => {
+    logout();
+  };
   return (
     <header className="bg-white shadow-md p-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
@@ -45,7 +48,7 @@ const Header: React.FC = () => {
           </Link>
         </nav>
         
-        {/* Thanh tìm kiếm và đăng nhập */}
+         {/* Thanh tìm kiếm và đăng nhập/đăng xuất */}
         <div className="flex items-center space-x-4">
           <div className="relative hidden sm:block">
             <input
@@ -61,15 +64,26 @@ const Header: React.FC = () => {
               className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5"
             />
           </div>
-          
-          {/* Nút đăng nhập */}
-          <button 
-            onClick={handleLogin}
-            className="bg-black text-white rounded-full px-4 py-1 hover:bg-gray-800 transition-colors duration-200"
-          >
-            Đăng Nhập
-          </button>
-          
+
+         {user ? (
+           <div className="flex items-center space-x-3">
+             <span>Hi, {user.full_name}</span>
+             <button
+               onClick={handleLogout}
+               className="bg-red-500 text-white rounded-full px-4 py-1 hover:bg-red-600 transition-colors duration-200"
+             >
+               Đăng Xuất
+             </button>
+           </div>
+         ) : (
+            <button
+              onClick={handleLogin}
+              className="bg-black text-white rounded-full px-4 py-1 hover:bg-gray-800 transition-colors duration-200"
+            >
+              Đăng Nhập
+            </button>
+         )}
+
           {/* Theme toggle */}
           <button className="bg-green-700 text-white rounded-full px-4 py-1">
             🌿
