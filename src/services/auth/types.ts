@@ -1,22 +1,31 @@
-export interface LoginCredentials {
-  email: string
-  password: string
+interface LoginCredentials {
+  email: string;
+  password: string;
 }
 
-export interface RegisterCredentials {
-  email: string
-  full_name: string
-  role?: string
-  password: string
+interface RegisterCredentials {
+  email: string;
+  full_name: string;
+  role?: string;
+  password: string;
 }
 
-export interface User {
-  email: string
-  full_name: string
-  role: string
+interface LoginResponse {
+  token: string;
+  user: {
+    email: string;
+    full_name: string;
+    role: string;
+    password: string;
+  };
 }
 
-export interface AuthResponse {
-  token: string
-  user: User
+interface RegisterResponse {
+  token: string;
+  user: {
+    email: string;
+    full_name: string;
+    role: string;
+    password: string;
+  };
 }
