@@ -1,4 +1,4 @@
-import { callApi } from "../apiClient"
+import { callApi } from "../auth/apiClient"
 import { 
   CreateProductRequest, 
   CreateProductResponse, 
