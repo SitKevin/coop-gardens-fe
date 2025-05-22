@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-// src/components/contact/contact_card.tsx
 import { Covered_By_Your_Grace } from 'next/font/google';
 
 const coveredByYourGrace = Covered_By_Your_Grace({

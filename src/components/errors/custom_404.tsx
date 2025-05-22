@@ -1,5 +1,6 @@
-import React from "react";
-import Head from "next/head";
+import React from "react"
+import Head from "next/head"
+import Link from "next/link"
 
 export default function Custom404() {
   return (
@@ -14,14 +15,14 @@ export default function Custom404() {
             <h1 className="text-8xl font-bold text-gray-800">404</h1>
           </div>
           <div className="mt-4">
-            <h3 className="text-2xl font-semibold">Look like you're lost</h3>
+            <h3 className="text-2xl font-semibold">Look like you&apos;re lost</h3>
             <p className="text-lg mt-2">The page you are looking for is not available!</p>
-            <a href="/" className="mt-6 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+            <Link href="/" className="mt-6 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
               Go to Home
-            </a>
+            </Link>
           </div>
         </div>
       </section>
     </>
-  );
+  )
 }

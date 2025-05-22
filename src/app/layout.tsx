@@ -1,6 +1,6 @@
 import { AuthProvider } from "@/context/AuthContext"
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Pacifico, Nunito_Sans, Bungee, Lato } from "next/font/google";
+import { Geist, Geist_Mono, Pacifico, Nunito_Sans, Bungee } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import Header from '@/components/header/header';
@@ -20,12 +20,6 @@ const geistMono = Geist_Mono({
 const pacifico = Pacifico({
   weight: "400",
   variable: "--font-pacifico",
-  subsets: ["latin"],
-});
-
-const lato = Lato({
-  weight: "400",
-  variable: "--font-lato",
   subsets: ["latin"],
 });
 

@@ -1,31 +1,35 @@
-import { useState, useEffect } from "react"
-
-type Profile = {
-  id: string
-  name: string
-  email: string
-  role: "farmer" | "user"
-}
-
-const mockProfile: Profile = {
-  id: "1",
-  name: "Nguyễn Văn A",
-  email: "a@example.com",
-  role: "farmer", // Hoặc "farmer"
-}
+import useSWR from "swr"
+import { User } from "@/services/auth/types"
+import { getProfile } from "@/services/auth/profile"
+import { getAuthToken } from "@/services/auth/session"
 
 export function useProfile() {
-  const [profile, setProfile] = useState<Profile | null>(null)
-  const [isLoading, setLoading] = useState(true)
+  // Chỉ fetch khi có token
+  const token = getAuthToken()
+  const shouldFetch = !!token
 
-  useEffect(() => {
-    // Giả lập delay như gọi API
-    const t = setTimeout(() => {
-      setProfile(mockProfile)
-      setLoading(false)
-    }, 200) 
-    return () => clearTimeout(t)
-  }, [])
+  const { data, error, isLoading, mutate } = useSWR<User>(
+    shouldFetch ? "/api/profile" : null, 
+    async () => {
+      try {
+        // Gọi API từ service đã định nghĩa
+        return await getProfile()
+      } catch (error) {
+        console.error("Failed to fetch profile:", error)
+        throw error
+      }
+    },
+    {
+      revalidateOnFocus: false, // Không tự động fetch khi focus lại tab
+      dedupingInterval: 60000,   // Cache trong 1 phút
+      errorRetryCount: 2,        // Thử lại 2 lần nếu lỗi
+    }
+  )
 
-  return { profile, isLoading }
+  return {
+    profile: data,
+    isLoading,
+    error,
+    mutate
+  }
 }
