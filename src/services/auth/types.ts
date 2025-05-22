@@ -17,6 +17,33 @@ export interface Role {
   dashboard_url: string
 }
 
+/** Response API từ backend cho endpoint profile */
+export interface ProfileApiResponse {
+  id?: string
+  email?: string
+  full_name?: string
+  is_verified?: boolean
+  created_at?: string
+  updated_at?: string
+  // Backend trả về roles có ID viết hoa
+  roles?: Array<{
+    ID?: number
+    Name?: string
+    dashboard_url?: string
+  }>
+  // Trường hợp nested user
+  user?: {
+    id: string
+    email: string
+    full_name: string
+    roles: Array<{
+      ID: number
+      Name: string
+      dashboard_url?: string
+    }>
+  }
+}
+
 /** User mà UI sử dụng – mỗi user chỉ có 1 role (string) */
 export interface User {
   id: string
