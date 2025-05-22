@@ -7,7 +7,6 @@ import React, {
   ReactNode,
 } from "react"
 import { useRouter } from "next/navigation"
-import { jwtDecode } from "jwt-decode"
 import type { User, LoginCredentials, AuthResponse } from "@/services/auth/types"
 import { login as loginService } from "@/services/auth/login"
 import { getProfile } from "@/services/auth/profile"
