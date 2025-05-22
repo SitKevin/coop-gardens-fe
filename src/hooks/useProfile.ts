@@ -1,3 +1,4 @@
+"use client"
 import useSWR from "swr"
 import { User } from "@/services/auth/types"
 import { getProfile } from "@/services/auth/profile"

@@ -1,3 +1,4 @@
+"use client"
 import type { AuthResponse, User } from "./types"
 
 export function saveSession(auth: AuthResponse): void {

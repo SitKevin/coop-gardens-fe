@@ -1,8 +1,10 @@
+"use client"
 import { callApi } from "./apiClient"
 import type { User, ProfileApiResponse } from "./types"
+import { getAuthToken } from "./session"
 
 export async function getProfile(): Promise<User> {
-  const token = localStorage.getItem("token") || ""
+  const token = getAuthToken() || "" 
   
   // Sử dụng type ProfileApiResponse từ types.ts
   const response = await callApi<ProfileApiResponse>("/v1/common/profile", {
