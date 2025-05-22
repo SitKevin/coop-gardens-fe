@@ -23,6 +23,7 @@ export interface User {
   email: string
   full_name: string
   role: string
+  dashboard_url?: string
 }
 
 /** Response chung của login/register */

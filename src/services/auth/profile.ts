@@ -16,14 +16,16 @@ export async function getProfile(): Promise<User> {
   // Xử lý response từ API để map sang kiểu User
   // Nếu response trả về dạng { user: { ... } }
   const userData = response.user || response
-  
+
+  const firstRole = userData.roles?.[0] || {}
   // Map dữ liệu vào User object
   const user: User = {
     id: userData.id || "",
     email: userData.email || "",
     full_name: userData.full_name || "",
     // Lấy role từ mảng roles nếu có, nếu không thì lấy từ trường role
-    role: userData.roles?.[0]?.name || userData.role || "",
+    role: firstRole.name || firstRole.Name || userData.role || "",
+    dashboard_url: firstRole.dashboard_url || firstRole.dashboard_url || "",
   }
   
   return user
