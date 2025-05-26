@@ -1,7 +1,5 @@
 import React from 'react';
 import ContactSection from '@/components/contact/contact_section';
-import Header from '@/components/header/header';
-import Footer from '@/components/footer/footer';
 import { ContactInfoCards } from '@/components/contact/contact_card';
 const ContactPage: React.FC = () => {
   return (
