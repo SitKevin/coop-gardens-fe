@@ -16,7 +16,7 @@ export async function GET(request: Request) {
   try {
     // Bước 1: Sử dụng Geocoding API để tìm tọa độ chính xác
     const geoResponse = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(localLocation)}&limit=1&appid=${API_KEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(localLocation)}&limit=1&appid=${API_KEY}`
     );
     
     if (!geoResponse.ok) {
