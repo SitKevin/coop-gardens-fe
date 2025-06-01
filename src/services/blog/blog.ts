@@ -48,7 +48,7 @@ export const createComment = async (
     content: string;
   }
 ): Promise<Comment> => {
-  return callApi(`/blog/${blogId}/comments`, {
+  return callApi(`/v2/blog/${blogId}/comments`, {
     method: "POST",
     body: JSON.stringify(comment),
   });
@@ -60,7 +60,7 @@ export const createReview = async (review: {
   rating: number;
   comment?: string;
 }): Promise<Review> => {
-  return callApi("/blog/reviews", {
+  return callApi("/v2/blog/reviews", {
     method: "POST",
     body: JSON.stringify(review),
   });
@@ -68,7 +68,7 @@ export const createReview = async (review: {
 
 // Get reviews for a product
 export const getProductReviews = async (inventoryId: number): Promise<GetReviewsResponse> => {
-  return callApi(`/blog/reviews/${inventoryId}`, {
+  return callApi(`/v2/blog/reviews/${inventoryId}`, {
     method: "GET",
   });
 };
