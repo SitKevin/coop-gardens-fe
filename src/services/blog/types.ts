@@ -4,7 +4,7 @@ export interface Blog {
   content: string;
   author_id: string;
   created_at: string;
-  author_name?: string; // This might be included in the API response
+  author_name?: string; 
 }
 
 export interface Comment {
@@ -13,7 +13,7 @@ export interface Comment {
   author_id: string;
   content: string;
   created_at: string;
-  author_name?: string; // This might be included in the API response
+  author_name?: string; 
 }
 
 export interface Review {
@@ -23,7 +23,7 @@ export interface Review {
   rating: number;
   comment?: string;
   created_at: string;
-  user_name?: string; // This might be included in the API response
+  user_name?: string; 
 }
 
 export interface GetAllBlogsResponse {

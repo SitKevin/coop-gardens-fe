@@ -54,13 +54,11 @@ export default function BlogMain() {
             <div className="flex flex-col justify-center items-center min-h-[600px]">
                 <h2 className="font-pacifico text-6xl font-semibold text-center my-15 bg-gradient-to-r from-green-400 to-teal-500 bg-clip-text text-transparent px-3">BZEA BLOG</h2>
                 <div className="text-gray-500 text-xl mt-8">No blog posts available yet.</div>
-                <Link href="/blogs/create" className="mt-4 px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors">
-                    Create First Post
+                <Link href="/blogs/create" className="mt-4 px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"> Create First Post
                 </Link>
             </div>
         )
     }
-
     // Featured blog (first blog)
     const featuredBlog = blogs[0]
     
