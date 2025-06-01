@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const API_KEY = process.env.WEATHER_API_KEY || "e240b8edd0caa8dfb6bcda322795c5db";
+const API_KEY = process.env.WEATHER_API_KEY;
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
