@@ -11,14 +11,14 @@ import {
 
 // Get all blogs
 export const getBlogs = async (): Promise<GetAllBlogsResponse> => {
-  return callApi("/blog", {
+  return callApi("/v2/blog", {
     method: "GET",
   });
 };
 
 // Get blog by ID
 export const getBlogById = async (id: number): Promise<GetBlogResponse> => {
-  return callApi(`/blog/${id}`, {
+  return callApi(`/v2/blog/${id}`, {
     method: "GET",
   });
 };
@@ -28,7 +28,7 @@ export const createBlog = async (blog: {
   title: string;
   content: string;
 }): Promise<Blog> => {
-  return callApi("/blog", {
+  return callApi("/v2/blog", {
     method: "POST",
     body: JSON.stringify(blog),
   });
@@ -36,7 +36,7 @@ export const createBlog = async (blog: {
 
 // Get comments for a blog
 export const getBlogComments = async (blogId: number): Promise<GetCommentsResponse> => {
-  return callApi(`/blog/${blogId}/comments`, {
+  return callApi(`/v2/blog/${blogId}/comments`, {
     method: "GET",
   });
 };
