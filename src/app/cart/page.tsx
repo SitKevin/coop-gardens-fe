@@ -7,58 +7,81 @@ import OrderSummary from "@/components/cart/OrderSummary"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/context/AuthContext"
 
+// Define proper types for cart items
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  imageUrl: string;
+  inventory_id?: number;
+}
+
+// Define API response type
+interface CartApiResponse {
+  items: Array<{
+    id: number;
+    product_name: string;
+    price: number;
+    quantity: number;
+    image_url?: string;
+    inventory_id: number;
+  }>;
+}
+
 export default function CartPage() {
   const { token } = useAuth()
-  const [items, setItems] = useState<any[]>([])
+  const [items, setItems] = useState<CartItem[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-  const fetchCart = async () => {
-    try {
-      setLoading(true)
-      
-      // Try to get cart from API
-      if (token) {
-        try {
-          const response = await fetch("/api/v2/product-order/cart", {
-            headers: {
-              "Authorization": `Bearer ${token}`
-            }
-          })
-          
-          if (response.ok) {
-            const data = await response.json()
-            const cartItems = data.items?.map((item: any) => ({
-              id: item.id?.toString(),
-              name: item.product_name || "Sản phẩm",
-              price: item.price || 0,
-              quantity: item.quantity || 1,
-              imageUrl: item.image_url || "/female-farmer.jpg"
-            })) || []
+    const fetchCart = async () => {
+      try {
+        setLoading(true)
+        
+        // Try to get cart from API
+        if (token) {
+          try {
+            const response = await fetch("/api/v2/product-order/cart", {
+              headers: {
+                "Authorization": `Bearer ${token}`
+              }
+            })
             
-            setItems(cartItems)
-            setLoading(false)
-            return
+            if (response.ok) {
+              const data = await response.json() as CartApiResponse
+              const cartItems = data.items?.map((item) => ({
+                id: item.id.toString(),
+                name: item.product_name || "Sản phẩm",
+                price: item.price || 0,
+                quantity: item.quantity || 1,
+                imageUrl: item.image_url || "/female-farmer.jpg",
+                inventory_id: item.inventory_id
+              })) || []
+              
+              setItems(cartItems)
+              setLoading(false)
+              return
+            }
+          } catch (err) {
+            console.error("Error fetching cart from API:", err)
           }
-        } catch (err) {
-          console.error("Error fetching cart from API:", err)
         }
+        
+        // Fallback to localStorage for guests or if API fails
+        const localCart = localStorage.getItem('guest_cart')
+        if (localCart) {
+          setItems(JSON.parse(localCart))
+        } else {
+          setItems([])
+        }
+      } finally {
+        setLoading(false)
       }
-      
-      // Fallback to localStorage for guests or if API fails
-      const localCart = localStorage.getItem('guest_cart')
-      if (localCart) {
-        setItems(JSON.parse(localCart))
-      } else {
-        setItems([])
-      }
-    } finally {
-      setLoading(false)
     }
-  }
 
-  fetchCart()
-}, [token])
+    fetchCart()
+  }, [token])
 
   // Update quantity handler
   const updateQty = (id: string, qty: number) => {
@@ -74,10 +97,11 @@ export default function CartPage() {
     const updatedItems = items.filter(it => it.id !== id)
     setItems(updatedItems)
     
-    //update localStorage
+    // Also update localStorage
     localStorage.setItem('guest_cart', JSON.stringify(updatedItems))
   }
 
+  // Loading state
   if (loading) {
     return (
       <div className="max-w-[1200px] mx-auto py-8 px-4 flex justify-center items-center min-h-[400px]">
